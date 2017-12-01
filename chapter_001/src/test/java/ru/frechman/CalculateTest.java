@@ -1,22 +1,21 @@
 package ru.frechman;
 
 import org.junit.Test;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
-  *Test Calculate.
-  *
-  *@author Sergey Frechman
-  *@version $id$
-  *@since 0.1
-  */
+ * Test Calculate.
+ *
+ * @author Sergey Frechman
+ * @version $id$
+ * @since 0.1
+ */
 public class CalculateTest {
 
     /**
-     *Test echo.
+     * Test echo.
      */
     @Test
     public void whenTakeNameThenThreeEchoPlusName() {
