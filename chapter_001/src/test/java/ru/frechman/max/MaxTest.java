@@ -25,4 +25,15 @@ public class MaxTest {
         assertThat(max.max(-10,0), is(0));
         assertThat(max.max(-15,-2), is(-2));
     }
+
+    @Test
+    public void maxThreeTest() {
+        Max maximum = new Max();
+        
+        assertThat(maximum.max(0,10,15), is(15));
+        assertThat(maximum.max(0,-10,1), is(1));
+        assertThat(maximum.max(-5,3,0), is(3));
+        assertThat(maximum.max(-5,-3,0), is(0));
+        assertThat(maximum.max(-5,-3,-150), is(-3));
+    }
 }

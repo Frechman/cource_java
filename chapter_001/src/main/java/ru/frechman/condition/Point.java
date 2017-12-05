@@ -5,8 +5,8 @@ package ru.frechman.condition;
  */
 public class Point {
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
     /**
      * Задаёт координаты точки.
@@ -14,7 +14,7 @@ public class Point {
      * @param x координата по оси X (абсцисса).
      * @param y координата по оси Y (ордината).
      */
-    public Point(int x, int y) {
+    public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
