@@ -38,5 +38,7 @@ public class FactorialTest {
         assertThat(fact.factorialStream(20), is(2432902008176640000L));
         assertThat(fact.factorialStream(0), is(1L));
         assertThat(fact.factorialStream(1), is(1L));
+        assertThat(fact.factorialStream(2), is(2L));
+        assertThat(fact.factorialStream(5), is(120L));
     }
 }

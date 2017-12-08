@@ -15,9 +15,6 @@ public class Factorial {
      */
     public int calc(int n) {
         int result = 1;
-        if (n == 0 || n == 1) {
-            return result;
-        }
         for (int i = 2; i <= n; i++) {
             result *= i;
         }
@@ -31,7 +28,7 @@ public class Factorial {
      * @return Значение int 'n!'.
      */
     public int factorial(int n) {
-        if (n == 0 || n == 1) {
+        if (n == 0) {
             return 1;
         }
         return n * factorial(n - 1);
@@ -44,10 +41,22 @@ public class Factorial {
      * @return Значение long 'n!'.
      */
     public long factorialStream(int n) {
-        if (n == 0) {
-            return 1;
-        }
         return LongStream.rangeClosed(1, n).parallel()
                          .reduce(1, (a, b) -> a * b);
+    }
+
+    /**
+     * StackOverflow
+     */
+    public static long factor1(long p) {
+        return (p == 1 ? 1 : p * factor1(p - 1));
+    }
+    
+    public static long factor2(long p) {
+        long res = 1; 
+        for ( ; p > 0; p--) {
+            res *= p;
+        }
+        return res;
     }
 }
