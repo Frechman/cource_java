@@ -1,13 +1,14 @@
 package ru.frechman.array;
 
-import java.util.*;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.util.Arrays;
+
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * Тесты для класса ArraySorts.
- *
  */
 public class ArraySortsTest {
 

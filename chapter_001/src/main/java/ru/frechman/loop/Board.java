@@ -2,15 +2,14 @@ package ru.frechman.loop;
 
 /**
  * Псевдо-шахматная доска.
- *
  */
 public class Board {
 
     /**
      * Рисунок псевдо-шахматной доски.
      *
-     * @param width Ширина доски.
-     * @param height Высота доски. 
+     * @param width  Ширина доски.
+     * @param height Высота доски.
      * @return Строку вида "шахматная доска".
      */
     public String paint(int width, int height) {

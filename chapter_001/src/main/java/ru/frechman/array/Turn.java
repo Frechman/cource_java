@@ -2,13 +2,11 @@ package ru.frechman.array;
 
 /**
  * Переворот массива.
- *
  */
 public class Turn {
 
     /**
      * Переворот массива задом наперёд.
-     *
      */
     public int[] back(int[] array) {
         int temp;

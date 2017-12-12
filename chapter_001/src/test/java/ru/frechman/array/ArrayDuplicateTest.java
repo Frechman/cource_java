@@ -1,12 +1,12 @@
 package ru.frechman.array;
 
 import org.junit.Test;
+
 import static org.hamcrest.collection.IsArrayContainingInAnyOrder.arrayContainingInAnyOrder;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Tests for the Turn.
- *
  */
 public class ArrayDuplicateTest {
 

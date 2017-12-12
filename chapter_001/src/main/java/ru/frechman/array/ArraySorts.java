@@ -10,9 +10,8 @@ public class ArraySorts {
 
     /**
      * Сортировка BubbleSort.
-     *
      */
-    public static int[] bubbleSort(int[] array) {
+    public static int[] bubbleSort(int... array) {
         int temp;
         for (int i = 0; i < array.length - 1; i++) {        // (length - 1) потому что при последнем проходе 
             for (int j = 0; j < array.length - 1; j++) {    // элемент уже на своём месте и чтобы 

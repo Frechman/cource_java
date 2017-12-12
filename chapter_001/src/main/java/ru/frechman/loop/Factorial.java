@@ -1,6 +1,6 @@
 package ru.frechman.loop;
 
-import java.util.stream.*;
+import java.util.stream.LongStream;
 
 /**
  * Вычисление факториала.
@@ -36,13 +36,13 @@ public class Factorial {
 
     /**
      * Вычесляет факториал с помощью StreamAPI.
-     * 
+     *
      * @param n Факториал числа n.
      * @return Значение long 'n!'.
      */
     public long factorialStream(int n) {
         return LongStream.rangeClosed(1, n).parallel()
-                         .reduce(1, (a, b) -> a * b);
+                .reduce(1, (a, b) -> a * b);
     }
 
     /**
@@ -51,10 +51,10 @@ public class Factorial {
     public static long factor1(long p) {
         return (p == 1 ? 1 : p * factor1(p - 1));
     }
-    
+
     public static long factor2(long p) {
-        long res = 1; 
-        for ( ; p > 0; p--) {
+        long res = 1;
+        for (; p > 0; p--) {
             res *= p;
         }
         return res;

@@ -22,7 +22,7 @@ public class Calculate {
     /**
      * Method echo.
      *
-     * @param name Youre name.
+     * @param name You're name.
      * @return Echo plus name.
      */
     public String echo(String name) {

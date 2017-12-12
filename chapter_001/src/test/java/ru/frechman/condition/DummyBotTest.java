@@ -1,11 +1,12 @@
 package ru.frechman.condition;
 
 import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- *Тесты глупого бота.
+ * Тесты глупого бота.
  */
 public class DummyBotTest {
 

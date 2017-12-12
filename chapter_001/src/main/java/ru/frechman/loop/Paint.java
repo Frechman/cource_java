@@ -1,15 +1,13 @@
 package ru.frechman.loop;
 
 public class Paint {
-
     /**
-     * Рисунок пирамиды.
+     * Drawing pyramid.
      *
-     * @param width Ширина доски.
-     * @param height Высота доски. 
-     * @return Строку вида "шахматная доска".
+     * @param h height pyramid.
+     * @return draw pseudo pyramid.
      */
-    public String piramid(int h) {
+    public String pyramid(int h) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
 
@@ -25,4 +23,5 @@ public class Paint {
         }
         return screen.toString();
     }
+
 }

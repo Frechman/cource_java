@@ -1,15 +1,14 @@
 package ru.frechman.array;
 
 import java.util.Arrays;
+
 /**
  * Remove duplicates in array.
- *
  */
 public class ArrayDuplicate {
 
     /**
      * Remove duplicates in array.
-     *
      */
     public String[] remove(String[] array) {
         int unique = array.length;
