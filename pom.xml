@@ -1,10 +1,10 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.frechman</groupId>
-    <artifactId>cource_java</artifactId>
+    <artifactId>course_java</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>cource_java</name>
+    <name>course_java</name>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
