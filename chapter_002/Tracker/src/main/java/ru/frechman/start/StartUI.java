@@ -7,13 +7,14 @@ import java.util.Date;
 public class StartUI {
 
     /**
-     * Константа меню для добавления новой заявки.
+     * Константы для пунктов меню.
      */
-    private static final String ADD = "1";
-
-    /**
-     * Константа для выхода из цикла.
-     */
+    private static final String ADD_ITEM = "1";
+    private static final String SHOW_ALL_ITEMS = "2";
+    private static final String EDIT_ITEM = "3";
+    private static final String DELETE_ITEM = "4";
+    private static final String FIND_ITEM_BY_ID = "5";
+    private static final String FIND_ITEMS_BY_NAME = "6";
     private static final String EXIT = "7";
 
     /**
@@ -40,7 +41,7 @@ public class StartUI {
     /**
      * Запуск программы.
      *
-     * @param args
+     * @param args Args command line.
      */
     public static void main(String[] args) {
         new StartUI(new ConsoleInput(), new Tracker()).init();
@@ -55,26 +56,27 @@ public class StartUI {
             this.showMenu();
             String userChoice = this.input.ask("Введите пункт меню : ");
             switch (userChoice) {
-                case "1":
+                case ADD_ITEM:
                     this.createItem();
                     break;
-                case "2":
+                case SHOW_ALL_ITEMS:
                     this.showAllItems();
                     break;
-                case "3":
+                case EDIT_ITEM:
                     this.editItem();
                     break;
-                case "4":
+                case DELETE_ITEM:
                     this.deleteItem();
                     break;
-                case "5":
+                case FIND_ITEM_BY_ID:
                     this.findItemById();
                     break;
-                case "6":
+                case FIND_ITEMS_BY_NAME:
                     this.findItemsByName();
                     break;
-                case "7":
+                case EXIT:
                     exit = true;
+                    System.out.println("I'll be back!");
                     break;
                 default:
                     System.out.println("Error!. The item menu is not exist.");
@@ -132,7 +134,11 @@ public class StartUI {
         System.out.println("-------------- LIST FOUNDS ALL ITEMS --------------");
         String findsName = this.input.ask("Введите ИМЯ заявки, которую хотите найти : ");
         Item[] allItems = tracker.findByName(findsName);
-        printItem(allItems);
+        if (allItems.length != 0) {
+            printItem(allItems);
+        } else {
+            System.out.println("    ### Заявки не найдены. ###    ");
+        }
         System.out.println("------------ END founds list all Items ------------");
 
     }
@@ -193,5 +199,15 @@ public class StartUI {
         System.out.println("|        6. Find items by name.         |");
         System.out.println("|        7. Exit Program.               |");
         System.out.println("|_______________________________________|");
+    }
+
+    private void showSimpleMenu() {
+        System.out.println("1. Add new Item.");
+        System.out.println("2. Show all items.");
+        System.out.println("3. Edit item.");
+        System.out.println("4. Delete item.");
+        System.out.println("5. Find item by Id.");
+        System.out.println("6. Find items by name.");
+        System.out.println("7. Exit Program.");
     }
 }

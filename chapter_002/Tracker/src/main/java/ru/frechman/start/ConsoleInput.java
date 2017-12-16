@@ -3,10 +3,10 @@ package ru.frechman.start;
 import java.util.Scanner;
 
 public class ConsoleInput implements Input {
+    private Scanner scanner = new Scanner(System.in);
 
     @Override
     public String ask(String question) {
-        Scanner scanner = new Scanner(System.in);
         System.out.print(question);
         return scanner.nextLine();
     }
