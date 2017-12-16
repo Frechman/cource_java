@@ -28,7 +28,7 @@ public class TrackerTest {
         // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
         // Обновляем заявку в трекере.
-        tracker.replace(previous.getId(), next);
+        tracker.edit(previous.getId(), next);
         // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
@@ -47,7 +47,7 @@ public class TrackerTest {
         String foundId = tracker.getAll()[0].getId();
         Item expectedNewItem = new Item("55", "55", 55L);
 
-        tracker.replace(foundId, expectedNewItem);
+        tracker.edit(foundId, expectedNewItem);
         String foundNewId = tracker.getAll()[0].getId();
         Item actREs = tracker.findById(foundNewId);
         assertThat(actREs, is(expectedNewItem));
