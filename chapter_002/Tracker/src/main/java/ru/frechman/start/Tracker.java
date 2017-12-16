@@ -36,7 +36,7 @@ public class Tracker {
      * @param id   Id edit item.
      * @param item New edited item.
      */
-    public void replace(String id, Item item) {
+    public void edit(String id, Item item) {
         for (int i = 0; i < this.items.length; i++) {
             if (items[i] != null) {
                 if (this.items[i].getId().equals(id)) {
@@ -92,25 +92,6 @@ public class Tracker {
     }
 
     /**
-     * Find item by nameItem.
-     *
-     * @param key Desired name of item.
-     * @return Array items found items.
-     */
-    public Item[] findByName(String key) {
-        Item[] resultArrItems = new Item[100];
-        int indexResultArrItems = 0;
-        for (Item originItem : this.items) {
-            if (originItem != null) {
-                if (originItem.getName().equals(key)) {
-                    resultArrItems[indexResultArrItems++] = originItem;
-                }
-            }
-        }
-        return Arrays.copyOf(resultArrItems, indexResultArrItems);
-    }
-
-    /**
      * Find item by id.
      *
      * @param id Desired id of item.
@@ -127,6 +108,25 @@ public class Tracker {
             }
         }
         return foundItem;
+    }
+
+    /**
+     * Find item by nameItem.
+     *
+     * @param key Desired name of item.
+     * @return Array items found items.
+     */
+    public Item[] findByName(String key) {
+        Item[] resultArrItems = new Item[100];
+        int indexResultArrItems = 0;
+        for (Item originItem : this.items) {
+            if (originItem != null) {
+                if (originItem.getName().equals(key)) {
+                    resultArrItems[indexResultArrItems++] = originItem;
+                }
+            }
+        }
+        return Arrays.copyOf(resultArrItems, indexResultArrItems);
     }
 
     /**
