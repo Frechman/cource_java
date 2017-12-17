@@ -4,6 +4,7 @@ import org.junit.Test;
 import ru.frechman.models.Item;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
@@ -22,25 +23,29 @@ public class StartUITest {
     @Test
     public void testItemMenuEditItemsStartUI() {
         Tracker tracker = new Tracker();
-        tracker.add(new Item("test1", "desc1", 0L));
+        Item newItem = new Item("test1", "desc1", 0L);
+        tracker.add(newItem);
 
-        String[] actionUser = {"3", tracker.findAll()[0].getId(), "EDIT", "EDIT", "7"};
+        String[] actionUser = {"3", newItem.getId(), "EDIT1", "EDIT", "7"};
         new StartUI(new StubInput(actionUser), tracker).init();
 
-        assertThat(tracker.findAll()[0].getName(), is("EDIT"));
-        assertThat(tracker.findAll()[0].getDescription(), is("EDIT"));
+        assertThat(tracker.findById(newItem.getId()).getName(), is("EDIT1"));
+        assertThat(tracker.findById(newItem.getId()).getDescription(), is("EDIT"));
     }
 
     @Test
     public void testItemMenuDeleteStartUI() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("111", "description", 0L));
-        Item item1 = tracker.add(new Item("111", "desc2", 2L));
-
-        String[] actionUser = {"4", item.getId(), "7"};
+        //добавляем два элемента
+        Item item1 = tracker.add(new Item("111", "description", 0L));
+        Item item2 = tracker.add(new Item("111", "desc2", 2L));
+        //удаляем 1-й Item
+        String[] actionUser = {"4", item1.getId(), "5", item1.getId(), "7"};
         new StartUI(new StubInput(actionUser), tracker).init();
-
-        assertThat(tracker.findAll()[0], is(item1));
+        //теперь должен остаться лишь Item2
+        assertThat(tracker.findAll()[0], is(item2));
+        //проверка на NULL, значит объект не существует (удалён)
+        assertNull(tracker.findById(item1.getId()));
     }
 
     /*
