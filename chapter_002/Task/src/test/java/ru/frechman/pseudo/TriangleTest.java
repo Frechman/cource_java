@@ -11,11 +11,10 @@ public class TriangleTest {
     public void testDrawTriangle() {
         Triangle triangle = new Triangle();
         assertThat(triangle.draw(), is(new StringBuilder()
-                .append("#\n")
-                .append("##\n")
-                .append("# #\n")
-                .append("#  #\n")
-                .append("#   #\n")
-                .append("######\n").toString()));
+                .append("   ^   ")
+                .append("  ^^^  ")
+                .append(" ^^^^^ ")
+                .append("^^^^^^^")
+                .toString()));
     }
 }
