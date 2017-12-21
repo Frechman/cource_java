@@ -231,11 +231,10 @@ class Exit implements UserAction {
     @Override
     public void execute(Input input, Tracker tracker) {
         System.out.println("I'll be back!");
-        System.exit(0);
     }
 
     @Override
     public String info() {
-        return String.format("%s. %s", key(), "Exit.");
+        return String.format("%s. %s", key(), "Exit Program.");
     }
 }
