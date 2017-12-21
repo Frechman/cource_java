@@ -2,8 +2,6 @@ package ru.frechman.start;
 
 import ru.frechman.models.Item;
 
-import java.util.Date;
-
 public class StartUI {
 
     /**
@@ -51,6 +49,14 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        menu.fillActions();
+        do {
+            menu.showMenu();
+            int userChoice = Integer.valueOf(this.input.ask("Введите пункт меню : "));
+            menu.select(userChoice);
+        } while (!"y".equals(this.input.ask("Exit? (y): ")));
+/*
         boolean exit = false;
         while (!exit) {
             this.showSimpleMenu();
@@ -82,7 +88,7 @@ public class StartUI {
                     System.out.println("Error!. The item menu is not exist.");
                     break;
             }
-        }
+        }*/
     }
 
     private void showAllItems() {
