@@ -43,7 +43,7 @@ public class Calculator {
         try {
             this.result = first / second;
         } catch (ArithmeticException divideByZero) {
-            System.out.println("Error! Неверная арифметическая операция!");
+            System.out.println("Error! Неверная арифметическая операция.");
         }
     }
 

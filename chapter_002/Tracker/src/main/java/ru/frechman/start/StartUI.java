@@ -53,7 +53,7 @@ public class StartUI {
     public void init() {
         boolean exit = false;
         while (!exit) {
-            this.showMenu();
+            this.showSimpleMenu();
             String userChoice = this.input.ask("Введите пункт меню : ");
             switch (userChoice) {
                 case ADD_ITEM:
@@ -163,8 +163,8 @@ public class StartUI {
         for (int i = 0; i < allItems.length; i++) {
             System.out.println("" + (i + 1) + ". " + " Name: " + allItems[i].getName());
             System.out.println("    Description: " + allItems[i].getDescription());
-            Date date = new Date(allItems[i].getCreate());
-            System.out.println("    Date of creation: " + date);
+            //Date date = new Date(allItems[i].getCreate());
+            System.out.println("    Date of creation: " + allItems[i].getCreate()/*date*/);
             System.out.println("    ID : " + allItems[i].getId());
         }
     }
@@ -202,12 +202,14 @@ public class StartUI {
     }
 
     private void showSimpleMenu() {
-        System.out.println("1. Add new Item.");
-        System.out.println("2. Show all items.");
-        System.out.println("3. Edit item.");
-        System.out.println("4. Delete item.");
-        System.out.println("5. Find item by Id.");
-        System.out.println("6. Find items by name.");
-        System.out.println("7. Exit Program.");
+        StringBuilder sb = new StringBuilder()
+                .append("1. Add new Item.").append(System.lineSeparator())
+                .append("2. Show all items.").append(System.lineSeparator())
+                .append("3. Edit item.").append(System.lineSeparator())
+                .append("4. Delete item.").append(System.lineSeparator())
+                .append("5. Find item by Id.").append(System.lineSeparator())
+                .append("6. Find items by name.").append(System.lineSeparator())
+                .append("7. Exit Program.").append(System.lineSeparator());
+        System.out.println(sb.toString());
     }
 }

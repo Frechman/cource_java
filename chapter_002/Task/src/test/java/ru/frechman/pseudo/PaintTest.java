@@ -11,19 +11,19 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class PaintTest {
-    // получаем ссылку на стандартный вывод в консоль.
+    // Получаем ссылку на стандартный вывод в консоль.
     private final PrintStream stdout = System.out;
     // Создаем буфер для хранения вывода.
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    //Заменяем стандартный вывод на вывод в пямять для тестирования.
+    // Заменяем стандартный вывод на вывод в пямять для тестирования.
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
         System.setOut(new PrintStream(out));
     }
 
-    // возвращаем обратно стандартный вывод в консоль.
+    // Возвращаем обратно стандартный вывод в консоль.
     @After
     public void backOutput() {
         System.setOut(this.stdout);
@@ -32,9 +32,9 @@ public class PaintTest {
 
     @Test
     public void whenDrawSquare() {
-        // выполняем действия пишушиее в консоль.
+        // Выполняем действия пишущиее в консоль.
         new Paint().draw(new Square());
-        // проверяем результат вычисления
+        // Проверяем результат вычисления
         assertThat(new String(this.out.toByteArray()), is(new StringBuilder()
                 .append("++++")
                 .append("+  +")
