@@ -3,21 +3,21 @@ package ru.frechman.start;
 public interface UserAction {
 
     /**
-     * Item Menu.
+     * Number Item Menu.
      * @return number Item Menu.
      */
     int key();
 
     /**
-     * Выполняет действия пользователя.
+     * Выполняет действия этого пункта меню.
      * @param input Ввод от пользователя.
      * @param tracker
      */
     void execute(Input input, Tracker tracker);
 
     /**
-     * Что пользователь делает.
-     * @return Строку - действие пользователя.
+     * Название действия пользователя - пункта меню.
+     * @return Строку с названием пункта меню.
      */
     String info();
 }

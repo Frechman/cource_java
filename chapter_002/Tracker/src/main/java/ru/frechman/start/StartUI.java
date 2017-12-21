@@ -1,7 +1,5 @@
 package ru.frechman.start;
 
-import ru.frechman.models.Item;
-
 public class StartUI {
 
     /**
@@ -49,13 +47,14 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        Tracker tracker = new Tracker();
+        MenuTracker menu = new MenuTracker(this.input, tracker);
         menu.fillActions();
-        do {
+        while (true) {
             menu.showMenu();
-            int userChoice = Integer.valueOf(this.input.ask("Введите пункт меню : "));
-            menu.select(userChoice);
-        } while (!"y".equals(this.input.ask("Exit? (y): ")));
+            String userChoice = this.input.ask("Введите пункт меню : ");
+            menu.select(Integer.valueOf(userChoice));
+        }
 /*
         boolean exit = false;
         while (!exit) {
@@ -89,102 +88,6 @@ public class StartUI {
                     break;
             }
         }*/
-    }
-
-    private void showAllItems() {
-        Item[] allItems = tracker.findAll();
-        System.out.println("-------------- LIST ALL ITEMS --------------");
-        printItem(allItems);
-        System.out.println("------------ END list all Items ------------");
-    }
-
-    private void editItem() {
-        System.out.println("---------------- EDIT ITEM ----------------");
-        String foundID = this.input.ask("Введите ID заявки, которую хотите изменить : ");
-        if (validIsFoundItem(foundID)) {
-            String newName = this.input.ask("Введите НОВОЕ имя заявки : ");
-            String newDesc = this.input.ask("Введите НОВОЕ описание заявки : ");
-            Item newItem = new Item(newName, newDesc, System.currentTimeMillis());
-            this.tracker.edit(foundID, newItem);
-            System.out.println("### Заявка изменена. ###");
-        } else {
-            System.out.println("    ### Заявка не найдена. ###    ");
-        }
-        System.out.println("-------------- END edit item --------------");
-    }
-
-    private void deleteItem() {
-        System.out.println("---------------- DELETE ITEM ----------------");
-        String foundID = this.input.ask("Введите ID заявки, которую хотите удалить : ");
-        if (validIsFoundItem(foundID)) {
-            this.tracker.delete(foundID);
-            System.out.println("### Заявка удалена. ###");
-        } else {
-            System.out.println("    ### Заявка не найдена. ###    ");
-        }
-        System.out.println("-------------- END delete item --------------");
-    }
-
-    private void findItemById() {
-        System.out.println("---------------- FIND ITEM ----------------");
-        String foundID = this.input.ask("Введите ID заявки, которую хотите найти : ");
-        if (validIsFoundItem(foundID)) {
-            printItem(this.tracker.findById(foundID));
-        } else {
-            System.out.println("    ### Заявка не найдена. ###    ");
-        }
-        System.out.println("-------------- END find item --------------");
-    }
-
-    private void findItemsByName() {
-        System.out.println("-------------- LIST FOUNDS ALL ITEMS --------------");
-        String findsName = this.input.ask("Введите ИМЯ заявки, которую хотите найти : ");
-        Item[] allItems = tracker.findByName(findsName);
-        if (allItems.length != 0) {
-            printItem(allItems);
-        } else {
-            System.out.println("    ### Заявки не найдены. ###    ");
-        }
-        System.out.println("------------ END founds list all Items ------------");
-
-    }
-
-    /**
-     * Method checking exist ID items.
-     *
-     * @param id item.
-     * @return true if ID item exist, else - false.
-     */
-    private boolean validIsFoundItem(String id) {
-        return this.tracker.findById(id) != null;
-    }
-
-    /**
-     * Method print all items in array.
-     *
-     * @param allItems array to print.
-     */
-    private void printItem(Item... allItems) {
-        System.out.println("    ### Найденные заявки: ###    ");
-        for (int i = 0; i < allItems.length; i++) {
-            System.out.println("" + (i + 1) + ". " + " Name: " + allItems[i].getName());
-            System.out.println("    Description: " + allItems[i].getDescription());
-            //Date date = new Date(allItems[i].getCreate());
-            System.out.println("    Date of creation: " + allItems[i].getCreate()/*date*/);
-            System.out.println("    ID : " + allItems[i].getId());
-        }
-    }
-
-    /**
-     * Метод реализует добавления новый заявки в хранилище.
-     */
-    private void createItem() {
-        System.out.println("-------------- Добавление новой языки --------------");
-        String name = this.input.ask("Введите имя заявки : ");
-        String desc = this.input.ask("Введите описание заявки : ");
-        Item item = new Item(name, desc, System.currentTimeMillis());
-        this.tracker.add(item);
-        System.out.println("--- Создана новая заявка с getId : " + item.getId() + " ---");
     }
 
     private void showMenu() {
