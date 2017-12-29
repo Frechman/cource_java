@@ -43,7 +43,7 @@ public class ValidateInputTest {
     @Ignore
     @Test
     public void test() {
-        String[] userChoice = {"8"};
+        String[] userChoice = {"sdf", "8", "1"};
         new StartUI(new ValidateInput(new StubInput(userChoice)), new Tracker()).init();
         assertThat(this.arrOut.toByteArray().toString(), is("Please, enter item from menu."));
 
