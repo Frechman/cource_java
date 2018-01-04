@@ -34,7 +34,7 @@ public class StartUI {
      * @param args Args command line.
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 
     /**
@@ -46,9 +46,9 @@ public class StartUI {
         boolean exit = false;
         while (!exit) {
             menu.showMenu();
-            String userChoice = this.input.ask("Введите пункт меню : ");
-            menu.select(Integer.valueOf(userChoice));
-            if (EXIT.equals(userChoice)) {
+            int userChoice = this.input.ask("Введите пункт меню : ", new int[]{1, 2, 3, 4, 5, 6, 7});
+            menu.select(userChoice);
+            if (userChoice == 7) {
                 exit = true;
             }
         }
