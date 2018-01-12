@@ -1,6 +1,7 @@
 package ru.frechman;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ConvertList {
@@ -47,5 +48,23 @@ public class ConvertList {
             cols = 0;
         }
         return result;
+    }
+
+    /**
+     * Convert List of array's elements to list.
+     *
+     * @param list of array's elements.
+     * @return list of Integer's elements from <code>list</code>.
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> resultList = new LinkedList<>();
+
+        for (int[] arr : list) {
+            for (int element : arr) {
+                resultList.add(element);
+            }
+        }
+
+        return resultList;
     }
 }
