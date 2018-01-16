@@ -28,7 +28,7 @@ public class ConvertListTest {
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         int[][] actual = convertList.toArray(list, 3);
         int[][] expected = {{1, 2, 3}, {4, 5, 6}, {7, 0, 0}};
-        //int[][] expected = {{1, 2,3,4}, {5, 6,7,0}};
+        //int[][] expected = {{1, 2,3,4}, {5, 6,7,0}}; //for rows = 4;
 
         assertArrayEquals(expected, actual);
     }
