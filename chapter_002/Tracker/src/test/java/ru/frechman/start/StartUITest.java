@@ -1,18 +1,18 @@
 package ru.frechman.start;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import ru.frechman.models.Item;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-
 public class StartUITest {
+
     /**
      * Tracker.
      */
@@ -54,8 +54,8 @@ public class StartUITest {
     public void testItemMenuADDStartUI() {
         String[] actionUser = {"1", "test1", "decs1", "7"};
         new StartUI(new StubInput(actionUser), this.tracker).init();
-        assertThat(tracker.getAll()[0].getName(), is("test1"));
-        assertThat(tracker.getAll()[0].getDescription(), is("decs1"));
+        assertThat(tracker.getAll().get(0).getName(), is("test1"));
+        assertThat(tracker.getAll().get(0).getDescription(), is("decs1"));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class StartUITest {
         new StartUI(new StubInput(actionUser), this.tracker).init();
 
         //теперь должен остаться лишь Item2
-        assertThat(tracker.findAll()[0], is(item2));
+        assertThat(tracker.findAll().get(0), is(item2));
         //проверка на NULL, значит объект не существует (удалён)
         assertNull(tracker.findById(item1.getId()));
     }
@@ -100,13 +100,20 @@ public class StartUITest {
                 is(
                         new StringBuilder()
                                 .append(sbMenu)
-                                .append("-------------- LIST ALL ITEMS --------------").append(System.lineSeparator())
-                                .append("    ### Найденные заявки: ###    ").append(System.lineSeparator())
-                                .append("1.  Name: ").append(item.getName()).append(System.lineSeparator())
-                                .append("    Description: ").append(item.getDescription()).append(System.lineSeparator())
-                                .append("    Date of creation: ").append(item.getCreate()).append(System.lineSeparator())
-                                .append("    ID : ").append(item.getId()).append(System.lineSeparator())
-                                .append("------------ END list all Items ------------").append(System.lineSeparator())
+                                .append("-------------- LIST ALL ITEMS --------------")
+                                .append(System.lineSeparator())
+                                .append("    ### Найденные заявки: ###    ")
+                                .append(System.lineSeparator())
+                                .append("1.  Name: ").append(item.getName())
+                                .append(System.lineSeparator())
+                                .append("    Description: ").append(item.getDescription())
+                                .append(System.lineSeparator())
+                                .append("    Date of creation: ").append(item.getCreate())
+                                .append(System.lineSeparator())
+                                .append("    ID : ").append(item.getId())
+                                .append(System.lineSeparator())
+                                .append("------------ END list all Items ------------")
+                                .append(System.lineSeparator())
                                 .append(sbMenu)
                                 .append("I'll be back!").append(System.lineSeparator())
                                 .toString()
@@ -126,13 +133,20 @@ public class StartUITest {
                 is(
                         new StringBuilder()
                                 .append(sbMenu)
-                                .append("---------------- FIND ITEM ----------------").append(System.lineSeparator())
-                                .append("    ### Найденные заявки: ###    ").append(System.lineSeparator())
-                                .append("1.  Name: ").append(item.getName()).append(System.lineSeparator())
-                                .append("    Description: ").append(item.getDescription()).append(System.lineSeparator())
-                                .append("    Date of creation: ").append(item.getCreate()).append(System.lineSeparator())
-                                .append("    ID : ").append(item.getId()).append(System.lineSeparator())
-                                .append("-------------- END find item --------------").append(System.lineSeparator())
+                                .append("---------------- FIND ITEM ----------------")
+                                .append(System.lineSeparator())
+                                .append("    ### Найденные заявки: ###    ")
+                                .append(System.lineSeparator())
+                                .append("1.  Name: ").append(item.getName())
+                                .append(System.lineSeparator())
+                                .append("    Description: ").append(item.getDescription())
+                                .append(System.lineSeparator())
+                                .append("    Date of creation: ").append(item.getCreate())
+                                .append(System.lineSeparator())
+                                .append("    ID : ").append(item.getId())
+                                .append(System.lineSeparator())
+                                .append("-------------- END find item --------------")
+                                .append(System.lineSeparator())
                                 .append(sbMenu)
                                 .append("I'll be back!").append(System.lineSeparator())
                                 .toString()
@@ -152,9 +166,12 @@ public class StartUITest {
                 is(
                         new StringBuilder()
                                 .append(sbMenu)
-                                .append("---------------- FIND ITEM ----------------").append(System.lineSeparator())
-                                .append("    ### Заявка не найдена. ###    ").append(System.lineSeparator())
-                                .append("-------------- END find item --------------").append(System.lineSeparator())
+                                .append("---------------- FIND ITEM ----------------")
+                                .append(System.lineSeparator())
+                                .append("    ### Заявка не найдена. ###    ")
+                                .append(System.lineSeparator())
+                                .append("-------------- END find item --------------")
+                                .append(System.lineSeparator())
                                 .append(sbMenu)
                                 .append("I'll be back!").append(System.lineSeparator())
                                 .toString()
@@ -173,13 +190,20 @@ public class StartUITest {
                 is(
                         new StringBuilder()
                                 .append(sbMenu)
-                                .append("-------------- LIST FOUNDS ALL ITEMS --------------").append(System.lineSeparator())
-                                .append("    ### Найденные заявки: ###    ").append(System.lineSeparator())
-                                .append("1.  Name: ").append(newItem.getName()).append(System.lineSeparator())
-                                .append("    Description: ").append(newItem.getDescription()).append(System.lineSeparator())
-                                .append("    Date of creation: ").append(newItem.getCreate()).append(System.lineSeparator())
-                                .append("    ID : ").append(newItem.getId()).append(System.lineSeparator())
-                                .append("------------ END founds list all Items ------------").append(System.lineSeparator())
+                                .append("-------------- LIST FOUNDS ALL ITEMS --------------")
+                                .append(System.lineSeparator())
+                                .append("    ### Найденные заявки: ###    ")
+                                .append(System.lineSeparator())
+                                .append("1.  Name: ").append(newItem.getName())
+                                .append(System.lineSeparator())
+                                .append("    Description: ").append(newItem.getDescription())
+                                .append(System.lineSeparator())
+                                .append("    Date of creation: ").append(newItem.getCreate())
+                                .append(System.lineSeparator())
+                                .append("    ID : ").append(newItem.getId())
+                                .append(System.lineSeparator())
+                                .append("------------ END founds list all Items ------------")
+                                .append(System.lineSeparator())
                                 .append(sbMenu)
                                 .append("I'll be back!").append(System.lineSeparator())
                                 .toString()

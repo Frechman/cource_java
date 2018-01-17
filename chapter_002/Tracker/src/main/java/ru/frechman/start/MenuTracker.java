@@ -1,16 +1,19 @@
 package ru.frechman.start;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import ru.frechman.models.Item;
 
 public class MenuTracker {
 
     private Input input;
     private Tracker tracker;
-    private int position = 0;
+
     /**
      * Пункты меню.
      */
-    private UserAction[] actions = new UserAction[10];
+    private List<UserAction> actions = new ArrayList<>();
 
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
@@ -21,13 +24,13 @@ public class MenuTracker {
      * Заполняет наше меню пунктами.
      */
     public void fillActions() {
-        this.actions[position++] = new AddItem(position, "Add new Item.");
-        this.actions[position++] = new ShowAllItems(position, "Show all items.");
-        this.actions[position++] = new EditItem(position, "Edit item.");
-        this.actions[position++] = new DeleteItem(position, "Delete item.");
-        this.actions[position++] = new FindItemById(position, "Find item by Id.");
-        this.actions[position++] = new FindItemsByName(position, "Find items by name.");
-        this.actions[position++] = new Exit(position, "Exit Program.");
+        actions.add(new AddItem(1, "Add new Item."));
+        actions.add(new ShowAllItems(2, "Show all items."));
+        actions.add(new EditItem(3, "Edit item."));
+        actions.add(new DeleteItem(4, "Delete item."));
+        actions.add(new FindItemById(5, "Find item by Id."));
+        actions.add(new FindItemsByName(6, "Find items by name."));
+        actions.add(new Exit(7, "Exit Program."));
     }
 
     /**
@@ -36,15 +39,16 @@ public class MenuTracker {
      * @param action new item menu.
      */
     public void actionAdd(UserAction action) {
-        this.actions[position++] = action;
+        this.actions.add(action);
     }
+
     /**
      * Выбор меню пользователем.
      *
      * @param key номер меню.
      */
     public void select(int key) {
-        this.actions[key - 1].execute(this.input, this.tracker);
+        this.actions.get(key - 1).execute(this.input, this.tracker);
     }
 
     /**
@@ -64,14 +68,16 @@ public class MenuTracker {
      *
      * @param allItems array to print.
      */
-    private static void printItem(Item... allItems) {
+    private static void printItem(List<Item> allItems) {
         System.out.println("    ### Найденные заявки: ###    ");
-        for (int i = 0; i < allItems.length; i++) {
-            System.out.println("" + (i + 1) + ". " + " Name: " + allItems[i].getName());
-            System.out.println("    Description: " + allItems[i].getDescription());
+        int i = 1;
+        for (Item item : allItems) {
+            System.out.println("" + i + ". " + " Name: " + item.getName());
+            System.out.println("    Description: " + item.getDescription());
             //Date date = new Date(allItems[i].getCreate());
-            System.out.println("    Date of creation: " + allItems[i].getCreate()/*date*/);
-            System.out.println("    ID : " + allItems[i].getId());
+            System.out.println("    Date of creation: " + item.getCreate()/*date*/);
+            System.out.println("    ID : " + item.getId());
+            i++;
         }
     }
 
@@ -105,7 +111,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            Item[] allItems = tracker.findAll();
+            List<Item> allItems = tracker.findAll();
             System.out.println("-------------- LIST ALL ITEMS --------------");
             printItem(allItems);
             System.out.println("------------ END list all Items ------------");
@@ -166,7 +172,7 @@ public class MenuTracker {
             System.out.println("---------------- FIND ITEM ----------------");
             String foundID = input.ask("Введите ID заявки, которую хотите найти : ");
             if (tracker.findById(foundID) != null) {
-                printItem(tracker.findById(foundID));
+                printItem(Collections.singletonList(tracker.findById(foundID)));
             } else {
                 System.out.println("    ### Заявка не найдена. ###    ");
             }
@@ -184,8 +190,8 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("-------------- LIST FOUNDS ALL ITEMS --------------");
             String findsName = input.ask("Введите ИМЯ заявки, которую хотите найти : ");
-            Item[] allItems = tracker.findByName(findsName);
-            if (allItems.length != 0) {
+            List<Item> allItems = tracker.findByName(findsName);
+            if (!allItems.isEmpty()) {
                 printItem(allItems);
             } else {
                 System.out.println("    ### Заявки не найдены. ###    ");
