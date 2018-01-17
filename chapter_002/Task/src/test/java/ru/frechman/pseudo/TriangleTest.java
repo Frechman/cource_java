@@ -1,9 +1,9 @@
 package ru.frechman.pseudo;
 
-import org.junit.Test;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 
 public class TriangleTest {
 
