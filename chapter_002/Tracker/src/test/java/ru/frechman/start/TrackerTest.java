@@ -1,11 +1,13 @@
 package ru.frechman.start;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import ru.frechman.models.Item;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
 
@@ -14,11 +16,11 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.getAll()[0], is(item));
+        assertThat(tracker.findById(item.getId()), is(item));
     }
 
     @Test
-    public void whenReplaceNameThenReturnNewName() {
+    public void whenEditNameThenReturnNewName() {
         Tracker tracker = new Tracker();
         Item previous = new Item("test1", "testDescription", 123L);
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
@@ -34,7 +36,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void testReplace() {
+    public void testEdit() {
         Tracker tracker = new Tracker();
         Item item1 = new Item("test2", "testDecs", 31L);
         Item item2 = new Item("test3", "testDecs", 31L);
@@ -44,11 +46,11 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item3);
         //get ID item 1
-        String foundId = tracker.getAll()[0].getId();
+        String foundId = tracker.getAll().get(0).getId();
         Item expectedNewItem = new Item("55", "55", 55L);
 
         tracker.edit(foundId, expectedNewItem);
-        String foundNewId = tracker.getAll()[0].getId();
+        String foundNewId = tracker.getAll().get(0).getId();
         Item actREs = tracker.findById(foundNewId);
         assertThat(actREs, is(expectedNewItem));
     }
@@ -63,16 +65,16 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item3);
         //get ID item2
-        String foundId = tracker.getAll()[1].getId();
+        String foundId = tracker.getAll().get(1).getId();
         //delete found Item by Id item2
         tracker.delete(foundId);
         //Set up expected Array
-        Item[] expectedItems = new Item[2];
-        expectedItems[0] = item1;
-        expectedItems[1] = item3;
+        List<Item> expectedItems = new ArrayList<>();
+        expectedItems.add(item1);
+        expectedItems.add(item3);
 
         assertThat(tracker.findAll(), is(expectedItems));
-        assertArrayEquals(expectedItems, tracker.findAll());
+        assertEquals(expectedItems, tracker.findAll());
 
     }
 
@@ -86,12 +88,12 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item3);
 
-        Item[] expectedItems = new Item[3];
-        expectedItems[0] = item1;
-        expectedItems[1] = item2;
-        expectedItems[2] = item3;
+        List<Item> expectedItems = new ArrayList<>();
+        expectedItems.add(item1);
+        expectedItems.add(item2);
+        expectedItems.add(item3);
 
-        assertArrayEquals(expectedItems, tracker.findAll());
+        assertEquals(expectedItems, tracker.findAll());
     }
 
     @Test
@@ -104,12 +106,12 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item3);
 
-        Item[] expectedItems = new Item[100];
-        expectedItems[0] = item1;
-        expectedItems[1] = item2;
-        expectedItems[2] = item3;
+        List<Item> expectedItems = new ArrayList<>();
+        expectedItems.add(item1);
+        expectedItems.add(item2);
+        expectedItems.add(item3);
         assertThat(tracker.getAll(), is(expectedItems));
-        assertArrayEquals(expectedItems, tracker.getAll());
+        assertEquals(expectedItems, tracker.getAll());
     }
 
     @Test
@@ -124,12 +126,12 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.add(item31);
 
-        Item[] expectedItems = new Item[2];
-        expectedItems[0] = item1;
-        expectedItems[1] = item31;
+        List<Item> expectedItems = new ArrayList<>();
+        expectedItems.add(item1);
+        expectedItems.add(item31);
 
         assertThat(tracker.findByName("test1"), is(expectedItems));
-        assertArrayEquals(expectedItems, tracker.findByName("test1"));
+        assertEquals(expectedItems, tracker.findByName("test1"));
     }
 
     @Test
@@ -144,7 +146,7 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.add(item31);
 
-        String id = tracker.getAll()[2].getId();//Id Item3
+        String id = tracker.getAll().get(2).getId();//Id Item3
 
         Item actual = tracker.findById(id);
 

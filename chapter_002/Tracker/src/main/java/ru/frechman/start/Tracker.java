@@ -1,22 +1,25 @@
 package ru.frechman.start;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 import ru.frechman.models.Item;
 
-import java.util.Arrays;
-import java.util.Random;
-
+/**
+ * The class implements a tracking system.
+ */
 public class Tracker {
 
-    private static final Random RN = new Random();
     /**
-     * Array for save items.
+     * Random generate for ID number.
      */
-    private Item[] items = new Item[100];
+    private static final Random RN = new Random();
 
     /**
-     * Указатель ячейки для новой заявки.
+     * List for save items.
      */
-    private int position = 0;
+    private List<Item> items = new ArrayList<>();
 
     /**
      * Add item to array.
@@ -26,26 +29,25 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(generateId());
-        this.items[this.position++] = item;
+        this.items.add(item);
         return item;
     }
 
     /**
      * Edit item.
      *
-     * @param id   Id edit item.
+     * @param id Id edit item.
      * @param item New edited item.
      */
     public void edit(String id, Item item) {
-        for (int i = 0; i < this.items.length; i++) {
-            if (items[i] != null) {
-                if (this.items[i].getId().equals(id)) {
-                    item.setId(this.items[i].getId());
-                    this.items[i] = item;
+        for (Item current : items) {
+            if (current != null) {
+                if (current.getId().equals(id)) {
+                    item.setId(current.getId());
+                    items.set(items.indexOf(current), item);
                     break;
                 }
             }
-
         }
     }
 
@@ -55,7 +57,8 @@ public class Tracker {
      * @param id Id item.
      */
     public void delete(String id) {
-        for (int i = 0; i < this.items.length; i++) {
+        items.removeIf(a -> Objects.equals(a.getId(), id));
+        /*for (int i = 0; i < this.items.length; i++) {
             if (this.items[i] != null) {
                 if (this.items[i].getId().equals(id)) {
                     //искодный массив, с позиции srcPos, копируется в новый массив(или этотже) начиная
@@ -63,32 +66,31 @@ public class Tracker {
                     System.arraycopy(this.items, i + 1, this.items, i, (this.items.length - 1) - i);
                 }
             }
-        }
+        }*/
     }
 
     /**
      * Find all item.
      *
-     * @return Copy array items without null-elements.
+     * @return Copy List of Items without null-elements.
      */
-    public Item[] findAll() {
-        Item[] resultArrItems = new Item[100];
-        int indexResultArrItems = 0;
+    public List<Item> findAll() {
+        List<Item> resultArrItems = new ArrayList<>();
         for (Item originItem : this.items) {
             if (originItem != null) {
-                resultArrItems[indexResultArrItems++] = originItem;
+                resultArrItems.add(originItem);
             }
         }
-        return Arrays.copyOf(resultArrItems, indexResultArrItems);
+        return resultArrItems;
     }
 
     /**
      * All items.
      *
-     * @return Array all item.
+     * @return List of Items all item.
      */
-    public Item[] getAll() {
-        return items;
+    public List<Item> getAll() {
+        return this.items;
     }
 
     /**
@@ -99,10 +101,10 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item foundItem = null;
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null) {
-                if (this.items[i].getId().equals(id)) {
-                    foundItem = this.items[i];
+        for (Item item : this.items) {
+            if (item != null) {
+                if (item.getId().equals(id)) {
+                    foundItem = item;
                     break;
                 }
             }
@@ -111,22 +113,21 @@ public class Tracker {
     }
 
     /**
-     * Find item by nameItem.
+     * Find item by item's name.
      *
      * @param key Desired name of item.
-     * @return Array items found items.
+     * @return List of Items found items.
      */
-    public Item[] findByName(String key) {
-        Item[] resultArrItems = new Item[100];
-        int indexResultArrItems = 0;
+    public List<Item> findByName(String key) {
+        List<Item> resultArrItems = new ArrayList<>();
         for (Item originItem : this.items) {
             if (originItem != null) {
                 if (originItem.getName().equals(key)) {
-                    resultArrItems[indexResultArrItems++] = originItem;
+                    resultArrItems.add(originItem);
                 }
             }
         }
-        return Arrays.copyOf(resultArrItems, indexResultArrItems);
+        return resultArrItems;
     }
 
     /**
