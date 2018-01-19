@@ -1,4 +1,4 @@
-package ru.frechman.lite;
+package ru.frechman.collection.lite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,16 +56,15 @@ public class ListExample {
 
 
     public static void main(String[] args) {
-        List<User> users = new ArrayList<>();
 
+        List<User> users = new ArrayList<>(Arrays.asList(new User("pert"), new User("serj")));
         users.addAll(Arrays.asList(new User("pert"), new User("serj")));
-
-        Iterator<User> iterator = users.iterator();
 
         for (User user : users) {
             System.out.println(user);
         }
 
+        Iterator<User> iterator = users.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }

@@ -1,16 +1,12 @@
-package ru.frechman;
+package ru.frechman.collection;
 
 public class User {
-
 
     private Integer id;
 
     private String name;
 
     private String city;
-
-    public User() {
-    }
 
     public User(Integer id, String name, String city) {
         this.id = id;

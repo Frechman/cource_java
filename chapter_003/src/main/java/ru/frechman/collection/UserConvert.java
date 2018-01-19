@@ -1,4 +1,4 @@
-package ru.frechman;
+package ru.frechman.collection;
 
 import java.util.HashMap;
 import java.util.List;

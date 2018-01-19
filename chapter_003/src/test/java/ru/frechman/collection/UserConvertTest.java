@@ -1,7 +1,7 @@
-package ru.frechman;
+package ru.frechman.collection;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
