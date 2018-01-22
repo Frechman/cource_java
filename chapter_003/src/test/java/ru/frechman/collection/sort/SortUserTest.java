@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,10 +38,10 @@ public class SortUserTest {
     /**
      * Clearing the listUsers after each test.
      */
-    @After
+   /* @After
     public void clearList() {
         listUsers.clear();
-    }
+    }*/
 
     @Test
     public void testSort() {
@@ -55,7 +54,6 @@ public class SortUserTest {
                 new User("Pert", 122)
         }, actual.toArray());
     }
-
 
     @Test
     public void testSortNameLength() {
@@ -71,7 +69,6 @@ public class SortUserTest {
                 )
         );
     }
-
 
     @Test
     public void testSortByAllFields() {

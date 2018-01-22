@@ -23,7 +23,7 @@ public class SortUser {
     }
 
     /**
-     * Sort by name length user through Comparator.
+     * Sort by name length user through ListCompare.
      *
      * @param listUser the collection users.
      * @return sorted list by name length.
@@ -46,6 +46,16 @@ public class SortUser {
      */
     public List<User> sortByAllFields(List<User> listUser) {
         Collections.sort(listUser, new Comparator<User>() {
+            /**
+             * Sort by name and age user. Implements ListCompare. If o1.name ==
+             * o2.name, then sort by age.
+             *
+             * @param o1 the first object to be compared.
+             * @param o2 the second object to be compared.
+             * @return a negative integer, zero, or a positive integer as the
+             *         first argument is less than, equal to, or greater than
+             *         the second.
+             */
             @Override
             public int compare(User o1, User o2) {
                 final int result = o1.getName().compareTo(o2.getName());
