@@ -1,9 +1,9 @@
 package ru.frechman.array;
 
-import org.junit.Test;
-
 import static org.hamcrest.collection.IsArrayContainingInAnyOrder.arrayContainingInAnyOrder;
 import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 
 /**
  * Tests for the Turn.
@@ -12,21 +12,23 @@ public class ArrayDuplicateTest {
 
     @Test
     public void testDuplicateInArray() {
-        String[] arr = {"Привет", "Мир", "Привет", "Супер", "Мир"};
+        String[] array = {"Привет", "Мир", "Привет", "Супер", "Мир"};
         String[] expected = {"Привет", "Мир", "Супер"};
 
         ArrayDuplicate arrayDup = new ArrayDuplicate();
-        String[] actualResualt = arrayDup.remove(arr);
-        assertThat(actualResualt, arrayContainingInAnyOrder(expected));
+        String[] actualResult = arrayDup.removeDuplicates(array);
+
+        assertThat(actualResult, arrayContainingInAnyOrder(expected));
     }
 
     @Test
     public void testNotDuplicateInArray() {
-        String[] arr = {"Hello", "World", "Super", "Puper", "Duper", "Flow"};
+        String[] array = {"Hello", "World", "Super", "Puper", "Duper", "Flow"};
         String[] expected = {"Hello", "World", "Super", "Puper", "Duper", "Flow"};
 
         ArrayDuplicate arrayDup = new ArrayDuplicate();
-        String[] actualResualt = arrayDup.remove(arr);
-        assertThat(actualResualt, arrayContainingInAnyOrder(expected));
+        String[] actualResult = arrayDup.removeDuplicates(array);
+
+        assertThat(actualResult, arrayContainingInAnyOrder(expected));
     }
 }

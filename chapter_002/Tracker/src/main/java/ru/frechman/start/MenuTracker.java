@@ -11,7 +11,7 @@ public class MenuTracker {
     private Tracker tracker;
 
     /**
-     * Пункты меню.
+     * Menu items. Actions.
      */
     private List<UserAction> actions = new ArrayList<>();
 
@@ -21,7 +21,7 @@ public class MenuTracker {
     }
 
     /**
-     * Заполняет наше меню пунктами.
+     * Fill menu with items.
      */
     public void fillActions() {
         actions.add(new AddItem(1, "Add new Item."));
@@ -34,25 +34,25 @@ public class MenuTracker {
     }
 
     /**
-     * Add item menu.
+     * Add menu item.
      *
-     * @param action new item menu.
+     * @param action new menu item.
      */
     public void actionAdd(UserAction action) {
         this.actions.add(action);
     }
 
     /**
-     * Выбор меню пользователем.
+     * User select menu item.
      *
-     * @param key номер меню.
+     * @param key the menu item.
      */
     public void select(int key) {
         this.actions.get(key - 1).execute(this.input, this.tracker);
     }
 
     /**
-     * Вывод меню на экран.
+     * Output menu on display.
      */
     public void showMenu() {
         for (UserAction action : actions) {
@@ -81,15 +81,15 @@ public class MenuTracker {
         }
     }
 
+    /**
+     * The class implements adding a new item to the tracker.
+     */
     private class AddItem extends BaseAction {
 
         public AddItem(final int key, final String name) {
             super(key, name);
         }
 
-        /**
-         * Метод реализует добавления новый заявки в хранилище.
-         */
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("-------------- Добавление новой языки --------------");
@@ -118,7 +118,9 @@ public class MenuTracker {
         }
     }
 
-
+    /**
+     * The class implements editing the item from the tracker.
+     */
     private class EditItem extends BaseAction {
 
         public EditItem(int key, String name) {
@@ -141,6 +143,9 @@ public class MenuTracker {
         }
     }
 
+    /**
+     * The class implements deleting the item from the tracker.
+     */
     private class DeleteItem extends BaseAction {
 
         public DeleteItem(int key, String name) {
@@ -161,6 +166,11 @@ public class MenuTracker {
         }
     }
 
+    /**
+     * The class implements finding the item by id from the tracker.
+     *
+     * P.s. Static class - just learning type classes.
+     */
     private static class FindItemById extends BaseAction {
 
         public FindItemById(int key, String name) {
@@ -180,6 +190,11 @@ public class MenuTracker {
         }
     }
 
+    /**
+     * The class implements finding the item by name from the tracker.
+     *
+     * P.s. Static class - just learning type classes.
+     */
     private static class FindItemsByName extends BaseAction {
 
         public FindItemsByName(int key, String name) {
@@ -197,11 +212,15 @@ public class MenuTracker {
                 System.out.println("    ### Заявки не найдены. ###    ");
             }
             System.out.println("------------ END founds list all Items ------------");
-
         }
     }
 }
 
+/**
+ * The class implements finding the item by name from the tracker.
+ *
+ * P.s. Outer class - just learning type classes.
+ */
 class Exit extends BaseAction {
 
     public Exit(final int key, final String name) {

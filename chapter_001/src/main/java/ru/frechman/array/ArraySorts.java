@@ -3,15 +3,14 @@ package ru.frechman.array;
 import java.util.Arrays;
 
 /**
- * Сортировки массива.
- * LearnSortsArray.
+ * Learn Sorts Array.
  *
  * @author Frechman.
  */
 public class ArraySorts {
 
     /**
-     * Сортировка BubbleSort.
+     * Bubble Sort.
      */
     public static int[] bubbleSort(int... array) {
         int temp;
@@ -28,13 +27,13 @@ public class ArraySorts {
     }
 
     /**
-     * Merge Sort
+     * Merge Sort.
      *
-     * @param arr1 sort first array.
-     * @param arr2 sort second array.
-     * @return sort result array.
+     * @param arr1 the sort first array.
+     * @param arr2 the sort second array.
+     * @return sorted array.
      */
-    public static int[] mergeSort(int[] arr1, int[] arr2) {
+    public static int[] merge(int[] arr1, int[] arr2) {
         int[] result = new int[arr1.length + arr2.length];
         int ind1 = 0, ind2 = 0, indR = 0;
 
@@ -59,10 +58,10 @@ public class ArraySorts {
         int[] result = new int[arr.length];
 
         int mid = (left + right) / 2;
-        int[] arrL = mergeSort(arr, 0, mid);
-        int[] arrR = mergeSort(arr, mid + 1, right);
+        int[] arrL = mergeSort(arr, 0, mid - 1);
+        int[] arrR = mergeSort(arr, mid, right);
 
-        result = mergeSort(arrL, arrR);
+        result = merge(arrL, arrR);
 
         return result;
     }
@@ -71,7 +70,7 @@ public class ArraySorts {
         int[] arr = {2, 4, 6, 8, 10, 12};
         int[] arr2 = {0, 1, 3, 5, 7, 9, 11};
 
-        System.out.println(Arrays.toString(mergeSort(arr, arr2)));
+        System.out.println(Arrays.toString(merge(arr, arr2)));
         int[] arrR = {4, 5, -1, 6, 7, 8, 8, 8, 9, 9, 3, 435, 35, 2, 4234, 62, -5};
 
         System.out.println(Arrays.toString(mergeSort(arrR, 0, arrR.length)));
