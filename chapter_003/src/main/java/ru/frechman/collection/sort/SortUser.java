@@ -1,6 +1,5 @@
 package ru.frechman.collection.sort;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +28,7 @@ public class SortUser {
      * @return sorted list by name length.
      */
     public List<User> sortNameLength(List<User> listUser) {
-        Collections.sort(listUser, new Comparator<User>() {
+        listUser.sort(new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
                 return Integer.compare(o1.getName().length(), o2.getName().length());
@@ -45,7 +44,7 @@ public class SortUser {
      * @return sorted list lexicographical by name users and by age users.
      */
     public List<User> sortByAllFields(List<User> listUser) {
-        Collections.sort(listUser, new Comparator<User>() {
+        listUser.sort(new Comparator<User>() {
             /**
              * Sort by name and age user. Implements ListCompare. If o1.name ==
              * o2.name, then sort by age.

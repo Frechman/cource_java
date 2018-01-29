@@ -14,9 +14,11 @@ public class ArraySorts {
      */
     public static int[] bubbleSort(int... array) {
         int temp;
-        for (int i = 0; i < array.length - 1; i++) {        // (length - 1) потому что при последнем проходе 
-            for (int j = 0; j < array.length - 1; j++) {    // элемент уже на своём месте и чтобы 
-                if (array[j] > array[j + 1]) {              // j-элемент не вышел за пределы массива
+        for (int i = 0; i < array.length - 1;
+                i++) {        // (length - 1) потому что при последнем проходе
+            for (int j = 0; j < array.length - 1 - i;
+                    j++) {  // -i, потому что самый больший элемент будет уже на своём месте
+                if (array[j] > array[j + 1]) {
                     temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
@@ -55,15 +57,13 @@ public class ArraySorts {
     }
 
     public static int[] mergeSort(int[] arr, int left, int right) {
-        int[] result = new int[arr.length];
 
         int mid = (left + right) / 2;
         int[] arrL = mergeSort(arr, 0, mid - 1);
         int[] arrR = mergeSort(arr, mid, right);
 
-        result = merge(arrL, arrR);
+        return merge(arrL, arrR);
 
-        return result;
     }
 
     public static void main(String[] args) {

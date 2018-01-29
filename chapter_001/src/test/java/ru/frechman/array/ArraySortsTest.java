@@ -13,10 +13,10 @@ public class ArraySortsTest {
 
     @Test
     public void testBubbleSort() {
-        int[] array = {2, -8, 3, 0, 1, 5, 6, 4, -1, 10, 100};
+        int[] array = {100, 10, 8, 7, 6, 4, 3, 2, 0, -5, -9};
 
         //expectedSortArray
-        int[] copyArray = {2, -8, 3, 0, 1, 5, 6, 4, -1, 10, 100};
+        int[] copyArray = {100, 10, 8, 7, 6, 4, 3, 2, 0, -5, -9};
         Arrays.sort(copyArray);
 
         int[] actualArray = ArraySorts.bubbleSort(array);

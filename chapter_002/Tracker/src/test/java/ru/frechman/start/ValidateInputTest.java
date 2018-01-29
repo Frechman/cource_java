@@ -7,7 +7,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class ValidateInputTest {
@@ -20,7 +19,7 @@ public class ValidateInputTest {
     /**
      * Array for save data from user's input.
      */
-    private ByteArrayOutputStream arrOut = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream arrOut = new ByteArrayOutputStream();
 
     /**
      * Change standard outputStream in console, to outputStream in ByteArray.
@@ -35,15 +34,40 @@ public class ValidateInputTest {
      */
     @After
     public void backStream() {
-        System.setOut(stdout);
+        System.setOut(this.stdout);
     }
 
-    @Ignore
+    private final StringBuilder sbMenu = new StringBuilder()
+            .append("1. Add new Item.").append(System.lineSeparator())
+            .append("2. Show all items.").append(System.lineSeparator())
+            .append("3. Edit item.").append(System.lineSeparator())
+            .append("4. Delete item.").append(System.lineSeparator())
+            .append("5. Find item by Id.").append(System.lineSeparator())
+            .append("6. Find items by name.").append(System.lineSeparator())
+            .append("7. Exit Program.").append(System.lineSeparator())
+            .append(System.lineSeparator());
+
+
     @Test
-    public void test() {
-        String[] userChoice = {"sdf", "8", "1"};
-        new StartUI(new ValidateInput(new StubInput(userChoice)), new Tracker()).init();
-        assertThat(this.arrOut.toByteArray().toString(), is("Please, enter item from menu."));
+    public void whenMenuItemNotFoundAndNoValidateThenTestValidateInput() {
+        String[] userAction = {"asd", "8", "j", "7"};
+        StubInput input1 = new StubInput(userAction);
+        ValidateInput input = new ValidateInput(input1);
+        new StartUI(input, new Tracker()).init();
+
+        assertThat(new String(this.arrOut.toByteArray()),
+                is(
+                        new StringBuilder().append(sbMenu)
+                                .append("Please, enter validate data again.")
+                                .append(System.lineSeparator())
+                                .append("Please, enter item from menu.")
+                                .append(System.lineSeparator())
+                                .append("Please, enter validate data again.")
+                                .append(System.lineSeparator())
+                                .append("I'll be back!").append(System.lineSeparator())
+                                .toString()
+                )
+        );
     }
 
     @Test

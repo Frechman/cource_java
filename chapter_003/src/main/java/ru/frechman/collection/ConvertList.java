@@ -38,10 +38,10 @@ public class ConvertList {
         int row = 0;
         int cols = 0;
 
-        /*Iterator iterator = list.iterator();
+        /*Iterator<Integer> iterator = list.iterator();
         while (iterator.hasNext()) {
             if (cols <= rows-1) {
-                result[row][cols++] = (int) iterator.next();
+                result[row][cols++] = iterator.next();
             } else {
                 row++;
                 cols = 0;
