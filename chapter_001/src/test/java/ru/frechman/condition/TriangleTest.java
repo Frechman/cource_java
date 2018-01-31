@@ -1,13 +1,13 @@
 package ru.frechman.condition;
 
-import org.junit.Test;
-
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Test;
+
 /**
- * Класс описывающий треугольник.
+ * Tests for class Triangle.
  */
 public class TriangleTest {
 
@@ -67,18 +67,9 @@ public class TriangleTest {
         assertEquals(12.07, actualResult, 0.1);
     }
 
-    /*@Test //существование треугольника
-    public void testExistTriangle() {
-        Point a = new Point(0, 0);
-        Point b = new Point(0, 2);
-        Point c = new Point(0, 10);
-
-        Triangle triangle = new Triangle(a, b, c);
-
-        double ab = triangle.distance(a, b);
-        double ac = triangle.distance(a, c);
-        double bc = triangle.distance(b, c);
-        //не существует такого треугольника.
-        assertEquals(false, triangle.exist(ab, ac, bc)); 
-    }*/
+    @Test
+    public void testWhenNotExistTriangle() {
+        Triangle tr = new Triangle(new Point(0, 0), new Point(0, 0), new Point(0, 0));
+        assertEquals(-1, tr.area(), 0);
+    }
 }

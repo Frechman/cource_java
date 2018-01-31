@@ -1,34 +1,30 @@
 package ru.frechman.loop;
 
-import org.junit.Test;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Test;
+
 /**
- * Тест класса Factorial.
+ * Tests for class Factorial.
  */
 public class FactorialTest {
 
+    private Factorial fact = new Factorial();
+
     @Test
     public void testCalcMethod() {
-        Factorial fact = new Factorial();
-
         assertThat(fact.calc(5), is(120));
         assertThat(fact.calc(1), is(1));
     }
 
     @Test
-    public void wnehFactFiveThen120() {
-        Factorial fact = new Factorial();
-
+    public void whenFactFiveThen120() {
         assertThat(fact.factorial(5), is(120));
     }
 
     @Test
-    public void wnehFactZeroThenOne() {
-        Factorial fact = new Factorial();
-
+    public void whenFactZeroThenOne() {
         assertThat(fact.factorial(0), is(1));
     }
 
@@ -41,5 +37,15 @@ public class FactorialTest {
         assertThat(fact.factorialStream(1), is(1L));
         assertThat(fact.factorialStream(2), is(2L));
         assertThat(fact.factorialStream(5), is(120L));
+    }
+
+    @Test
+    public void testStaticFactor1When5FactThen120() {
+        assertThat(Factorial.factor1(5), is(120L));
+    }
+
+    @Test
+    public void testStaticFactor2When10FactThen120() {
+        assertThat(Factorial.factor2(10), is(3628800L));
     }
 }

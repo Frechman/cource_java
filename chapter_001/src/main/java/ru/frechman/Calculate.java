@@ -9,17 +9,6 @@ package ru.frechman;
 public class Calculate {
 
     /**
-     * Метод main запускает программу и выводит на экран "Hello World!".
-     *
-     * @param args Arguments main's method.
-     */
-    public static void main(String... args) {
-
-        System.out.println("Hello World!");
-
-    }
-
-    /**
      * Method echo.
      *
      * @param name You're name.
