@@ -1,5 +1,6 @@
 package ru.frechman.collection.lite;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -15,6 +16,9 @@ public class SetExample {
         integerSet.add(100);
 
         integerSet.forEach(System.out::println);
+
+
+        HashSet<String> hashset = new HashSet<>();
     }
 
 }
