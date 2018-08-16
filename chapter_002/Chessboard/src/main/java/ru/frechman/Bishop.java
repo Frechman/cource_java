@@ -5,7 +5,7 @@ package ru.frechman;
  */
 public class Bishop extends Figure {
 
-    protected Bishop(Cell position) {
+    Bishop(Cell position) {
         super(position);
     }
 
