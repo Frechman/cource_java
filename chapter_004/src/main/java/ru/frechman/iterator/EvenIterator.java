@@ -15,10 +15,12 @@ public class EvenIterator implements Iterator<Integer> {
     @Override
     public boolean hasNext() {
         int arrayLength = array.length;
-        for (int i = index; i < arrayLength; i++) {
-            if (isEven(array[i])) {
-                index = i; //need for next();
-                return true;
+        if (index < arrayLength) {
+            for (int i = index; i < arrayLength; i++) {
+                if (isEven(array[i])) {
+                    index = i; //need for next();
+                    return true;
+                }
             }
         }
         return false;
@@ -26,10 +28,8 @@ public class EvenIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        if (index < array.length) {
-            if (hasNext()) {
-                return array[index++];
-            }
+        if (hasNext()) {
+            return array[index++];
         }
         throw new NoSuchElementException("No such element.");
     }
