@@ -15,15 +15,17 @@ public class IteratorMultArrayTest {
 
     @Before
     public void setUp() {
-        it = new IteratorMultArray(new Integer[][]{{1}, {3, 4}, {7}});
+        it = new IteratorMultArray(new Integer[][]{{}, {1}, {}, {3, 4}, {}, {7}, {}});
     }
 
     @Test
     public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation() {
+        assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(1));
         assertThat(it.next(), is(3));
         assertThat(it.next(), is(4));
         assertThat(it.next(), is(7));
+        assertThat(it.hasNext(), is(false));
     }
 
     @Test
