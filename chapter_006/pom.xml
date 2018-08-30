@@ -14,5 +14,10 @@
     <artifactId>chapter_006</artifactId>
     <version>1.0</version>
     <description>SQL, JDBC</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>TrackerJDBC</module>
+    </modules>
 
 </project>
