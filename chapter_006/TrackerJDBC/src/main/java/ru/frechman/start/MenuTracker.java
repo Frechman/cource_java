@@ -75,8 +75,8 @@ public class MenuTracker {
         for (Item item : allItems) {
             System.out.println("" + i + ". " + " Name: " + item.getName());
             System.out.println("    Description: " + item.getDescription());
-            //Date date = new Date(allItems[i].getCreate());
-            System.out.println("    Date of creation: " + item.getCreate()/*date*/);
+            //Date date = new Date(allItems[i].getCreateDate());
+            System.out.println("    Date of creation: " + item.getCreateDate()/*date*/);
             System.out.println("    ID : " + item.getId());
             i++;
         }

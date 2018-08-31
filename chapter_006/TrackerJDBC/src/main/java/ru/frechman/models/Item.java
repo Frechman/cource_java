@@ -20,43 +20,17 @@ public class Item {
     /**
      * Date of creation.
      */
-    private long create;
-
-    /**
-     * Item's category.
-     */
-    private int category;
-
-    /**
-     * Item's state.
-     */
-    private int state;
+    private long createDate;
 
     /**
      * Comments item.
      */
     private String[] comments;
 
-    public Item(String name, String description, long create, int category, int state) {
+    public Item(String name, String description, long createDate) {
         this.name = name;
         this.description = description;
-        this.create = create;
-        this.category = category;
-        this.state = state;
-    }
-
-    public Item(String name, String description, long create) {
-        this.name = name;
-        this.description = description;
-        this.create = create;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public int getState() {
-        return state;
+        this.createDate = createDate;
     }
 
     public String getId() {
@@ -71,8 +45,8 @@ public class Item {
         return description;
     }
 
-    public long getCreate() {
-        return create;
+    public long getCreateDate() {
+        return createDate;
     }
 
     public String[] getComments() {
@@ -81,29 +55,5 @@ public class Item {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setCreate(long create) {
-        this.create = create;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public void setComments(String[] comments) {
-        this.comments = comments;
     }
 }
