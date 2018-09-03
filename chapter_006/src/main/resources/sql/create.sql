@@ -49,9 +49,10 @@ CREATE TABLE Rules (
 );
 --table for many-to-many
 CREATE TABLE Role_Rules (
+  id       SERIAL PRIMARY KEY,
   role_id  INT REFERENCES Roles (id),
   rules_id INT REFERENCES Rules (id),
-  PRIMARY KEY (role_id, rules_id)
+  UNIQUE (role_id, rules_id)
 );
 
 CREATE TABLE Users (
