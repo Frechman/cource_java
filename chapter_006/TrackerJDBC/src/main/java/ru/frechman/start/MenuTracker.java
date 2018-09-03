@@ -25,13 +25,13 @@ public class MenuTracker {
      * Fill menu with items.
      */
     public void fillActions() {
-        actions.add(new AddItem(1, "Add new Item."));
+        actions.add(new AddItem(1, "Add new item."));
         actions.add(new ShowAllItems(2, "Show all items."));
         actions.add(new EditItem(3, "Edit item."));
         actions.add(new DeleteItem(4, "Delete item."));
-        actions.add(new FindItemById(5, "Find item by Id."));
+        actions.add(new FindItemById(5, "Find item by id."));
         actions.add(new FindItemsByName(6, "Find items by name."));
-        actions.add(new Exit(7, "Exit Program."));
+        actions.add(new Exit(7, "Exit program."));
     }
 
     /**
@@ -218,7 +218,7 @@ public class MenuTracker {
 }
 
 /**
- * The class implements finding the item by name from the tracker.
+ * The class implements exit from menu.
  * <p>
  * P.s. Outer class - just learning type classes.
  */

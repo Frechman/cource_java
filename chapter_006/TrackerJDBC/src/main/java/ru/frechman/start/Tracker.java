@@ -7,6 +7,8 @@ import ru.frechman.models.Item;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,12 +36,10 @@ public class Tracker implements AutoCloseable {
             String username = prop.getProperty("database.username");
             String password = prop.getProperty("database.password");
             boolean autocommit = Boolean.parseBoolean(prop.getProperty("database.autocommit"));
-            String pathTableCreate = prop.getProperty("sql.create_table_path");
 
             this.connection = DriverManager.getConnection(url, username, password);
-            createTable(pathTableCreate);
+            createTable();
             this.connection.setAutoCommit(autocommit);
-
         } catch (IOException e) {
             System.out.println("Файл настроек не найден!");
             LOGGER.error(e.getMessage(), e);
@@ -53,14 +53,23 @@ public class Tracker implements AutoCloseable {
      * Создает таблицу.
      * SQL должен быть написан с проверкой того, что существует ли уже таблица.
      *
-     * @param pathFile путь до файла в котором написан sql запрос создания таблицы.
      * @throws SQLException
      * @throws IOException
      */
-    private void createTable(String pathFile) throws SQLException, IOException {
-        Path path = Paths.get(pathFile);
+    private void createTable() throws SQLException, IOException {
         try (Statement st = this.connection.createStatement()) {
+            URL resource = getClass().getClassLoader().getResource("sql/createTable.sql");
+            Path path = Paths.get(resource.toURI());
             st.executeUpdate(new String(Files.readAllBytes(path), StandardCharsets.UTF_8));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dropTable() throws SQLException {
+        try (Statement st = this.connection.createStatement()) {
+            st.executeUpdate("DROP TABLE Items;");
+            this.connection.commit();
         }
     }
 
@@ -182,15 +191,6 @@ public class Tracker implements AutoCloseable {
     }
 
     /**
-     * All items.
-     *
-     * @return List of Items all item.
-     */
-    public List<Item> getAll() {
-        return findAll();
-    }
-
-    /**
      * Find item by id.
      *
      * @param id Desired id of item.
@@ -259,7 +259,6 @@ public class Tracker implements AutoCloseable {
                 LOGGER.error(e1.getMessage(), e1);
             }
         }
-
         return resultArrItems;
     }
 

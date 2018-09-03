@@ -35,8 +35,11 @@ public class StartUI {
      *
      * @param args Args command line.
      */
-    public static void main(String[] args) {
-        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker(new File(args[0]))).init();
+    public static void main(String[] args) throws Exception {
+        File file = new File(args[0]);
+        try (Tracker tracker = new Tracker(file)) {
+            new StartUI(new ValidateInput(new ConsoleInput()), tracker).init();
+        }
     }
 
     /**
