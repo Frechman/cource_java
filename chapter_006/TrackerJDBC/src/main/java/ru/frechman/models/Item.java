@@ -59,14 +59,24 @@ public class Item {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Item item = (Item) o;
 
-        if (createDate != item.createDate) return false;
-        if (id != null ? !id.equals(item.id) : item.id != null) return false;
-        if (name != null ? !name.equals(item.name) : item.name != null) return false;
+        if (createDate != item.createDate) {
+            return false;
+        }
+        if (id != null ? !id.equals(item.id) : item.id != null) {
+            return false;
+        }
+        if (name != null ? !name.equals(item.name) : item.name != null) {
+            return false;
+        }
         return description != null ? description.equals(item.description) : item.description == null;
     }
 

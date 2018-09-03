@@ -171,8 +171,8 @@ public class Tracker implements AutoCloseable {
                 String id = rs.getString("id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
-                long create_date = rs.getTimestamp("create_date").getTime();
-                Item item = new Item(name, description, create_date);
+                long createDate = rs.getTimestamp("create_date").getTime();
+                Item item = new Item(name, description, createDate);
                 item.setId(id);
 
                 resultArrItems.add(item);
@@ -206,8 +206,8 @@ public class Tracker implements AutoCloseable {
             while (rs.next()) {
                 String name = rs.getString("name");
                 String description = rs.getString("description");
-                long create_date = rs.getTimestamp("create_date").getTime();
-                Item item = new Item(name, description, create_date);
+                long createDate = rs.getTimestamp("create_date").getTime();
+                Item item = new Item(name, description, createDate);
                 item.setId(id);
                 foundItem = item;
             }
@@ -242,8 +242,8 @@ public class Tracker implements AutoCloseable {
             while (rs.next()) {
                 String id = rs.getString("id");
                 String description = rs.getString("description");
-                long create_date = rs.getTimestamp("create_date").getTime();
-                Item item = new Item(name, description, create_date);
+                long createDate = rs.getTimestamp("create_date").getTime();
+                Item item = new Item(name, description, createDate);
                 item.setId(id);
 
                 resultArrItems.add(item);
