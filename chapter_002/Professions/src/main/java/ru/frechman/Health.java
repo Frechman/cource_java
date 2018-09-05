@@ -1,9 +1,9 @@
 package ru.frechman;
 
 public class Health {
-    private String nameDoctor;
-    private Patient patient;
-    private Prescription prescription;
+    private final String nameDoctor;
+    private final Patient patient;
+    private final Prescription prescription;
 
     public Health(String nameDoctor, Patient patient, Prescription prescription) {
         this.nameDoctor = nameDoctor;

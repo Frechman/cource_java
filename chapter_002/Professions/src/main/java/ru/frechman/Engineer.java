@@ -11,8 +11,8 @@ public class Engineer extends Profession {
         super(name, diploma);
     }
 
-    public Engineer(String name, Diploma diploma, int workExpience) {
-        super(name, diploma, workExpience);
+    public Engineer(String name, Diploma diploma, int workExperience) {
+        super(name, diploma, workExperience);
     }
 
     public void repair(Client client, Subject subject) {

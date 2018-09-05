@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 public class MatrixTest {
 
     @Test
-    public void testMuiltiple() {
+    public void testMultiply() {
         Matrix matrix = new Matrix();
         int[][] expected = matrix.multiple(10);
         assertThat(81, is(expected[9][9]));

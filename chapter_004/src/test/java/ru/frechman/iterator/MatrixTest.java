@@ -15,7 +15,7 @@ public class MatrixTest {
 
     @Before
     public void setUp() {
-        it = new IteratorMultArray(new Integer[][]{{1, 2, 3}, {4, 5, 6}});
+        it = new IteratorMultArray<>(new Integer[][]{{1, 2, 3}, {4, 5, 6}});
     }
 
     @Test
@@ -58,8 +58,8 @@ public class MatrixTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void shoulThrowNoSuchElementException() {
-        it = new IteratorMultArray(new Integer[][]{});
+    public void shouldThrowNoSuchElementException() {
+        it = new IteratorMultArray<>(new Integer[][]{});
         it.next();
     }
 }

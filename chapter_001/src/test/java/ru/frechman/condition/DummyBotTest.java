@@ -27,7 +27,7 @@ public class DummyBotTest {
     }
 
     @Test
-    public void whenUnknowBot() {
+    public void whenUnknownBot() {
         DummyBot dmBot = new DummyBot();
         String expect = "Это ставит меня в тупик. Спросите другой вопрос.";
         String actualResult = dmBot.answer("Как дела?");

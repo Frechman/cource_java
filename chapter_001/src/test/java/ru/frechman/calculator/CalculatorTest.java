@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
 
-    private Calculator calc = new Calculator();
+    private final Calculator calc = new Calculator();
 
     @Test
     public void whenOneAddOneThenTwo() {

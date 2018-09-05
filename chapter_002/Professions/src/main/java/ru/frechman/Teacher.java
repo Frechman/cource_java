@@ -10,11 +10,11 @@ public class Teacher extends Profession {
         super(name, diploma);
     }
 
-    public Teacher(String name, Diploma diploma, int workExpience) {
-        super(name, diploma, workExpience);
+    public Teacher(String name, Diploma diploma, int workExperience) {
+        super(name, diploma, workExperience);
     }
 
-    public Knoledge teach(Student student) {
+    public Knowledge teach(Student student) {
         return null;
     }
 

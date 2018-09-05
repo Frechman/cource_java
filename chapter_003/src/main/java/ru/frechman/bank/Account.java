@@ -12,7 +12,7 @@ public class Account {
     /**
      * Bank account details.
      */
-    private String requisites;
+    private final String requisites;
 
     public Account(int values, String requisites) {
         this.values = values;

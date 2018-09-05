@@ -10,18 +10,16 @@ public class Doctor extends Profession {
         super(name, diploma);
     }
 
-    public Doctor(String name, Diploma diploma, int workExpience) {
-        super(name, diploma, workExpience);
+    public Doctor(String name, Diploma diploma, int workExperience) {
+        super(name, diploma, workExperience);
     }
 
     public Health heal(Patient patient) {
-        Health health = new Health(this.getName(), patient, this.writePrescription(patient));
-        return health;
+        return new Health(this.getName(), patient, this.writePrescription(patient));
     }
 
     public Health heal(Patient patient, Prescription prescription) {
-        Health health = new Health(this.getName(), patient, prescription);
-        return health;
+        return new Health(this.getName(), patient, prescription);
     }
 
     Prescription writePrescription(Patient patient) {

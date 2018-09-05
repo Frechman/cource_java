@@ -1,7 +1,7 @@
 package ru.frechman;
 
 public class Diploma {
-    private String diploma;
+    private final String diploma;
 
     public Diploma(String diploma) {
         this.diploma = diploma;

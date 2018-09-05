@@ -15,7 +15,7 @@ public class IteratorMultArrayTest {
 
     @Before
     public void setUp() {
-        it = new IteratorMultArray(new Integer[][]{{}, {1}, {}, {3, 4}, {}, {7}, {}});
+        it = new IteratorMultArray<>(new Integer[][]{{}, {1}, {}, {3, 4}, {}, {7}, {}});
     }
 
     @Test
@@ -55,7 +55,7 @@ public class IteratorMultArrayTest {
     public void myTestIterator() {
         Integer[][] arr = {{1, 1}, {}, {}, {1}, {}, {4, 4, 5}, {}, {}, {3}, {}, {}};
 
-        IteratorMultArray it = new IteratorMultArray(arr);
+        IteratorMultArray it = new IteratorMultArray<>(arr);
 
         assertThat(it.hasNext(), is(true));
         assertThat(it.hasNext(), is(true));

@@ -1,7 +1,7 @@
 package ru.frechman.loop;
 
 /**
- * Cчётчик.
+ * Счётчик.
  *
  * @author Frechman.
  * @version 0.1.

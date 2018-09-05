@@ -1,10 +1,11 @@
 package ru.frechman.collection.comparator;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 import java.util.Arrays;
-import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public class ListCompareTest {
 
@@ -19,7 +20,7 @@ public class ListCompareTest {
     }
 
     @Test
-    public void whenLeftLessRightThenMunis() {
+    public void whenLeftLessRightThenMinus() {
         ListCompare compare = new ListCompare();
         int rst = compare.compare(
                 Arrays.asList(1),

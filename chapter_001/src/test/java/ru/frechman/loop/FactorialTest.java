@@ -1,16 +1,16 @@
 package ru.frechman.loop;
 
+import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-
-import org.junit.Test;
 
 /**
  * Tests for class Factorial.
  */
 public class FactorialTest {
 
-    private Factorial fact = new Factorial();
+    private final Factorial fact = new Factorial();
 
     @Test
     public void testCalcMethod() {
