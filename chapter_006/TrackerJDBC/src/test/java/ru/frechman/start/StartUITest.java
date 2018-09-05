@@ -102,25 +102,23 @@ public class StartUITest {
 
         assertThat(new String(this.out.toByteArray()),
                 is(
-                        new StringBuilder()
-                                .append(sbMenu)
-                                .append("-------------- LIST ALL ITEMS --------------")
-                                .append(System.lineSeparator())
-                                .append("    ### Найденные заявки: ###    ")
-                                .append(System.lineSeparator())
-                                .append("1.  Name: ").append(item.getName())
-                                .append(System.lineSeparator())
-                                .append("    Description: ").append(item.getDescription())
-                                .append(System.lineSeparator())
-                                .append("    Date of creation: ").append(item.getCreateDate())
-                                .append(System.lineSeparator())
-                                .append("    ID : ").append(item.getId())
-                                .append(System.lineSeparator())
-                                .append("------------ END list all Items ------------")
-                                .append(System.lineSeparator())
-                                .append(sbMenu)
-                                .append("I'll be back!").append(System.lineSeparator())
-                                .toString()
+                        String.valueOf(sbMenu) +
+                                "-------------- LIST ALL ITEMS --------------" +
+                                System.lineSeparator() +
+                                "    ### Найденные заявки: ###    " +
+                                System.lineSeparator() +
+                                "1.  Name: " + item.getName() +
+                                System.lineSeparator() +
+                                "    Description: " + item.getDescription() +
+                                System.lineSeparator() +
+                                "    Date of creation: " + item.getCreateDate() +
+                                System.lineSeparator() +
+                                "    ID : " + item.getId() +
+                                System.lineSeparator() +
+                                "------------ END list all Items ------------" +
+                                System.lineSeparator() +
+                                sbMenu +
+                                "I'll be back!" + System.lineSeparator()
                 ));
     }
 
@@ -134,25 +132,23 @@ public class StartUITest {
 
         assertThat(new String(this.out.toByteArray()),
                 is(
-                        new StringBuilder()
-                                .append(sbMenu)
-                                .append("---------------- FIND ITEM ----------------")
-                                .append(System.lineSeparator())
-                                .append("    ### Найденные заявки: ###    ")
-                                .append(System.lineSeparator())
-                                .append("1.  Name: ").append(item.getName())
-                                .append(System.lineSeparator())
-                                .append("    Description: ").append(item.getDescription())
-                                .append(System.lineSeparator())
-                                .append("    Date of creation: ").append(item.getCreateDate())
-                                .append(System.lineSeparator())
-                                .append("    ID : ").append(item.getId())
-                                .append(System.lineSeparator())
-                                .append("-------------- END find item --------------")
-                                .append(System.lineSeparator())
-                                .append(sbMenu)
-                                .append("I'll be back!").append(System.lineSeparator())
-                                .toString()
+                        String.valueOf(sbMenu) +
+                                "---------------- FIND ITEM ----------------" +
+                                System.lineSeparator() +
+                                "    ### Найденные заявки: ###    " +
+                                System.lineSeparator() +
+                                "1.  Name: " + item.getName() +
+                                System.lineSeparator() +
+                                "    Description: " + item.getDescription() +
+                                System.lineSeparator() +
+                                "    Date of creation: " + item.getCreateDate() +
+                                System.lineSeparator() +
+                                "    ID : " + item.getId() +
+                                System.lineSeparator() +
+                                "-------------- END find item --------------" +
+                                System.lineSeparator() +
+                                sbMenu +
+                                "I'll be back!" + System.lineSeparator()
                 ));
     }
 
@@ -166,17 +162,15 @@ public class StartUITest {
 
         assertThat(new String(this.out.toByteArray()),
                 is(
-                        new StringBuilder()
-                                .append(sbMenu)
-                                .append("---------------- FIND ITEM ----------------")
-                                .append(System.lineSeparator())
-                                .append("    ### Заявка не найдена. ###    ")
-                                .append(System.lineSeparator())
-                                .append("-------------- END find item --------------")
-                                .append(System.lineSeparator())
-                                .append(sbMenu)
-                                .append("I'll be back!").append(System.lineSeparator())
-                                .toString()
+                        String.valueOf(sbMenu) +
+                                "---------------- FIND ITEM ----------------" +
+                                System.lineSeparator() +
+                                "    ### Заявка не найдена. ###    " +
+                                System.lineSeparator() +
+                                "-------------- END find item --------------" +
+                                System.lineSeparator() +
+                                sbMenu +
+                                "I'll be back!" + System.lineSeparator()
                 ));
     }
 
@@ -190,25 +184,23 @@ public class StartUITest {
 
         assertThat(new String(this.out.toByteArray()),
                 is(
-                        new StringBuilder()
-                                .append(sbMenu)
-                                .append("-------------- LIST FOUNDS ALL ITEMS --------------")
-                                .append(System.lineSeparator())
-                                .append("    ### Найденные заявки: ###    ")
-                                .append(System.lineSeparator())
-                                .append("1.  Name: ").append(newItem.getName())
-                                .append(System.lineSeparator())
-                                .append("    Description: ").append(newItem.getDescription())
-                                .append(System.lineSeparator())
-                                .append("    Date of creation: ").append(newItem.getCreateDate())
-                                .append(System.lineSeparator())
-                                .append("    ID : ").append(newItem.getId())
-                                .append(System.lineSeparator())
-                                .append("------------ END founds list all Items ------------")
-                                .append(System.lineSeparator())
-                                .append(sbMenu)
-                                .append("I'll be back!").append(System.lineSeparator())
-                                .toString()
+                        String.valueOf(sbMenu) +
+                                "-------------- LIST FOUNDS ALL ITEMS --------------" +
+                                System.lineSeparator() +
+                                "    ### Найденные заявки: ###    " +
+                                System.lineSeparator() +
+                                "1.  Name: " + newItem.getName() +
+                                System.lineSeparator() +
+                                "    Description: " + newItem.getDescription() +
+                                System.lineSeparator() +
+                                "    Date of creation: " + newItem.getCreateDate() +
+                                System.lineSeparator() +
+                                "    ID : " + newItem.getId() +
+                                System.lineSeparator() +
+                                "------------ END founds list all Items ------------" +
+                                System.lineSeparator() +
+                                sbMenu +
+                                "I'll be back!" + System.lineSeparator()
                 ));
     }
 }

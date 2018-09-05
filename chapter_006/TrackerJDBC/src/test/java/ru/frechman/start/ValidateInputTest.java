@@ -64,15 +64,14 @@ public class ValidateInputTest {
 
         assertThat(new String(this.arrOut.toByteArray()),
                 is(
-                        new StringBuilder().append(sbMenu)
-                                .append("Please, enter validate data again.")
-                                .append(System.lineSeparator())
-                                .append("Please, enter item from menu.")
-                                .append(System.lineSeparator())
-                                .append("Please, enter validate data again.")
-                                .append(System.lineSeparator())
-                                .append("I'll be back!").append(System.lineSeparator())
-                                .toString()
+                        String.valueOf(sbMenu) +
+                                "Please, enter validate data again." +
+                                System.lineSeparator() +
+                                "Please, enter item from menu." +
+                                System.lineSeparator() +
+                                "Please, enter validate data again." +
+                                System.lineSeparator() +
+                                "I'll be back!" + System.lineSeparator()
                 )
         );
     }
