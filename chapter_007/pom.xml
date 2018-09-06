@@ -14,5 +14,27 @@
     <artifactId>chapter_007</artifactId>
     <version>1.0</version>
     <description>Servlet JSP</description>
+    <modules>
+        <module>task_web_project</module>
+    </modules>
+    <packaging>pom</packaging>
 
+    <properties>
+        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <slf4j-log4j12.version>1.7.25</slf4j-log4j12.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-log4j12.version}</version>
+        </dependency>
+    </dependencies>
 </project>
