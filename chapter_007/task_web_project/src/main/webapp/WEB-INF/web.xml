@@ -6,8 +6,24 @@
          version="3.1">
 
     <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>ru.frechman.servlets.UserServlet</servlet-class>
+        <!--<description>This servlet is presentation layout</description>-->
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>EchoServlet</servlet-name>
         <servlet-class>ru.frechman.servlets.EchoServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>EchoServlet</servlet-name>
