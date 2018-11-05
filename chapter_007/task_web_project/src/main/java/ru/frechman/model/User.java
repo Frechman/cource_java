@@ -28,7 +28,6 @@ public class User {
                 ", name: " + name +
                 ", login: " + login +
                 ", email: " + email +
-                ", createDate: " + createDate +
                 ']';
     }
 

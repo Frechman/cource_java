@@ -4,10 +4,10 @@ import ru.frechman.model.User;
 import ru.frechman.repository.MemoryStore;
 import ru.frechman.repository.Store;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ValidateService {
 
@@ -53,7 +53,7 @@ public class ValidateService {
 
     public List<User> findAll() {
         Collection<User> all = memoryStore.findAll();
-        return all != null ? new ArrayList<>(all) : Collections.emptyList();
+        return all != null ? new CopyOnWriteArrayList<>(all) : Collections.emptyList();
     }
 
     public User findById(Long id) {

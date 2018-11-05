@@ -14,5 +14,4 @@ public class EchoServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         writer.println("Hello World!");
     }
-
 }
