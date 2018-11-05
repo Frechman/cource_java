@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class MemoryStore implements Store {
 
@@ -19,11 +20,11 @@ public class MemoryStore implements Store {
     }
 
     private final Map<Long, User> userStore = new ConcurrentHashMap<>();
-    private Long seqId = 0L;
+    private AtomicLong seqId = new AtomicLong(0);
 
     @Override
     public User add(User user) {
-        user.setId(seqId++);
+        user.setId(seqId.getAndIncrement());
         user.setCreateDate(new Date());
         this.userStore.put(user.getId(), user);
         return user;
