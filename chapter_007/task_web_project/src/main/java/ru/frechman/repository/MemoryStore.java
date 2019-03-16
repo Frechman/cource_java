@@ -10,13 +10,13 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class MemoryStore implements Store {
 
-    private static final MemoryStore instance = new MemoryStore();
+    private static final MemoryStore INSTANCE = new MemoryStore();
 
     private MemoryStore() {
     }
 
     public static MemoryStore getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     private final Map<Long, User> userStore = new ConcurrentHashMap<>();

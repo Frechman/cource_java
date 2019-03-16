@@ -13,13 +13,13 @@ public class ValidateService {
 
     private final Store memoryStore = MemoryStore.getInstance();
 
-    private static final ValidateService instance = new ValidateService();
+    private static final ValidateService INSTANCE = new ValidateService();
 
     private ValidateService() {
     }
 
     public static ValidateService getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     public User add(User user) {
